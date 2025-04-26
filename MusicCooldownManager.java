@@ -13,8 +13,10 @@ public class MusicCooldownManager {
     }
 
     public static void setCooldown(Player player, int ticks) {
-        cooldowns.put(player.getUniqueId(), 
-            System.currentTimeMillis() + (ticks * 50L));
+        cooldowns.put(
+            player.getUniqueId(), 
+            System.currentTimeMillis() + (ticks * 50L) 
+        );
     }
 
     public static void clearCooldown(Player player) {
