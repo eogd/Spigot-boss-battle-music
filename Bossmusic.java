@@ -13,8 +13,9 @@ import java.util.*;
 public class Bossmusic extends JavaPlugin implements Listener {
     
     private static final int CHECK_INTERVAL = 20 * 5; 
-    private static final int COOLDOWN = 7200; 
+    private static final int COOLDOWN = 7200;
     private static final int RADIUS = 12 * 16; 
+    private static final String SOUND_ID = "ender_dragon.music";
 
     @Override
     public void onEnable() {
@@ -36,6 +37,7 @@ public class Bossmusic extends JavaPlugin implements Listener {
 
                 Bukkit.getOnlinePlayers().forEach(player -> {
                     if (!activePlayers.contains(player.getUniqueId())) {
+                        player.stopSound(SOUND_ID, SoundCategory.MUSIC);
                         MusicCooldownManager.clearCooldown(player);
                     }
                 });
@@ -43,11 +45,13 @@ public class Bossmusic extends JavaPlugin implements Listener {
                 activePlayers.forEach(uuid -> {
                     Player player = Bukkit.getPlayer(uuid);
                     if (player != null && !MusicCooldownManager.isOnCooldown(player)) {
-                        player.playSound(player.getLocation(), 
-                            "ender_dragon.music",
-                            SoundCategory.MUSIC, 
-                            1.0f, 
-                            1.0f);
+                        player.playSound(
+                            player.getLocation(),
+                            SOUND_ID,
+                            SoundCategory.MUSIC,
+                            1.0f,
+                            1.0f
+                        );
                         MusicCooldownManager.setCooldown(player, COOLDOWN);
                     }
                 });
