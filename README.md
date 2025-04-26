@@ -1,1 +1,2 @@
-You can build your own plugin, which I originally made for my server, but it's so easy to use
+You can build your own plugin, which I originally made for my server, but it's so easy to use.
+You may find the same type of plugin, but the core principle of the code is just to play custom texture pack music within the range of the specified creature, so its compatibility is very good, you only need to add the resource pack to your server, and the client can play it normally even if you don't have any mods installed, and it is also compatible with geysers.
